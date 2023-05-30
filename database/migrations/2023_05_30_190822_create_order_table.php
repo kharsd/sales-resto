@@ -18,7 +18,6 @@ return new class extends Migration
             $table->bigInteger('id_reservasi')->unsigned();
             $table->bigInteger('id_pesan_langsung')->unsigned();
             $table->bigInteger('id_pembayaran')->unsigned();
-            // $table->bigInteger('id_kasir')->unsigned();
             $table->string('nama_pelanggan');
             $table->integer('no_struk');
             $table->integer('harga_meja');
@@ -31,7 +30,6 @@ return new class extends Migration
             $table->foreign('id_reservasi')->references('id')->on('reservasi')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('id_pesan_langsung')->references('id')->on('pesan_langsung')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('id_pembayaran')->references('id')->on('pembayaran')->onDelete('cascade')->onUpdate('cascade');
-            // $table->foreign('id_kasir')->references('id')->on('kasir')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
