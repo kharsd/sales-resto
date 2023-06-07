@@ -13,12 +13,12 @@ return new class extends Migration
     {
         Schema::create('administrator', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('id_admin')->unsigned();
+            $table->bigInteger('id_users')->unsigned();
             $table->timestamps();
         });
 
         Schema::table('administrator', function (Blueprint $table) {
-            $table->foreign('id_admin')->references('id')->on('admin')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('id_users')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 
