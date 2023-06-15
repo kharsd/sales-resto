@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class pesan_langsung extends Model
+class Pesan_langsung extends Model
 {
     use HasFactory;
 
