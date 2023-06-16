@@ -45,18 +45,17 @@
 
         <ul class="sidebar-list">
           <li class="sidebar-list-item">
-            <a href="/administrator/menu" target="_blank">
-              {{-- <span class="material-icons-outlined">dashboard</span> @yield('menu1') --}}
+            <a href="/administrator/menu">
               <span class="material-icons-outlined">restaurant_menu</span> Menu
             </a>
           </li>
           <li class="sidebar-list-item">
-            <a href="/administrator/meja" target="_blank">
+            <a href="/administrator/meja">
               <span class="material-icons-outlined">table_restaurant</span> Meja
             </a>
           </li>
           <li class="sidebar-list-item">
-            <a href="/administrator/kasir" target="_blank">
+            <a href="/administrator/kasir">
               <span class="material-icons-outlined">point_of_sale</span> Kasir
             </a>
           </li>

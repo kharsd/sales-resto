@@ -39,11 +39,11 @@ Route::get('/manajer', [ManajerController::class, 'index']);
 // Route::get('/manajer/penjualan', [OrderController::class, 'index']);
 Route::resource('manajer/penjualan', OrderController::class);
 
-// Route::get('/manajer/menu', [MenuController::class, 'index']);
-Route::resource('manajer/menu', MenuController::class);
+Route::get('/manajer/menu', [MenuController::class, 'manajer']);
+// Route::resource('manajer/menu', MenuController::class);
 
-// Route::get('/manajer/meja', [MejaController::class, 'index']);
-Route::resource('manajer/meja', MejaController::class);
+Route::get('/manajer/meja', [MejaController::class, 'manajer']);
+// Route::resource('manajer/meja', MejaController::class);
 
 
 
@@ -60,8 +60,8 @@ Route::resource('kasir/pesan langsung', Pesan_langsungController::class);
 // Route::get('/kasir/reservasi', [ReservasiController::class, 'index']);
 Route::resource('kasir/reservasi', ReservasiController::class);
 
-// Route::get('/kasir/meja', [MejaController::class, 'index']);
-Route::resource('kasir/meja', MejaController::class);
+Route::get('/kasir/meja', [MejaController::class, 'kasir']);
+// Route::resource('kasir/meja', MejaController::class);
 
 
 
@@ -76,8 +76,8 @@ Route::get('/administrator/kasir', function () {
     return view('administrator./kasir');
 });
 
-// Route::get('/administrator/meja', [MejaController::class, 'index']);
-Route::resource('administrator/meja', MejaController::class);
+Route::get('/administrator/meja', [MejaController::class, 'administrator']);
+// Route::resource('administrator/meja', MejaController::class);
 
-// Route::get('/administrator/menu', [MenuController::class, 'index']);
-Route::resource('administrator/menu', MenuController::class);
+Route::get('/administrator/menu', [MenuController::class, 'administrator']);
+// Route::resource('administrator/menu', MenuController::class);

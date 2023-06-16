@@ -45,18 +45,17 @@
 
         <ul class="sidebar-list">
           <li class="sidebar-list-item">
-            <a href="/kasir/pesan langsung" target="_blank">
-              {{-- <span class="material-icons-outlined">dashboard</span> @yield('menu1') --}}
+            <a href="/kasir/pesan langsung">
               <span class="material-icons-outlined">dining</span> Pesan Langsung
             </a>
           </li>
           <li class="sidebar-list-item">
-            <a href="/kasir/reservasi" target="_blank">
+            <a href="/kasir/reservasi">
               <span class="material-icons-outlined">event_seat</span> Reservasi
             </a>
           </li>
           <li class="sidebar-list-item">
-            <a href="/kasir/meja" target="_blank">
+            <a href="/kasir/meja">
               <span class="material-icons-outlined">table_restaurant</span> Meja
             </a>
           </li>

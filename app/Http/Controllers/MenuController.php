@@ -10,7 +10,16 @@ class MenuController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    // public function index()
+    // {
+    //     return view('manajer./menu');
+    // }
+    public function administrator()
+    {
+        return view('administrator./menu');
+    }
+
+    public function manajer()
     {
         return view('manajer./menu');
     }

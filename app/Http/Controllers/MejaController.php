@@ -10,9 +10,23 @@ class MejaController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    // public function index()
+    // {
+    //     return view('manajer./meja');
+    // }
+    public function manajer()
     {
         return view('manajer./meja');
+    }
+
+    public function kasir()
+    {
+        return view('kasir./meja');
+    }
+
+    public function administrator()
+    {
+        return view('administrator./meja');
     }
 
     /**
