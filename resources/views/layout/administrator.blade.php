@@ -27,8 +27,6 @@
           <span class="material-icons-outlined">search</span>
         </div>
         <div class="header-right">
-          <span class="material-icons-outlined">notifications</span>
-          <span class="material-icons-outlined">email</span>
           <span class="material-icons-outlined">account_circle</span>
         </div>
       </header>
@@ -37,7 +35,7 @@
       <!-- Sidebar -->
       <aside id="sidebar">
         <div class="sidebar-title">
-          <div class="sidebar-brand">
+          <div class="sidebar-brand">            
             RESTAURANT
           </div>
           <span class="material-icons-outlined" onclick="closeSidebar()">close</span>

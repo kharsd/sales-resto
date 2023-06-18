@@ -27,8 +27,6 @@
           <span class="material-icons-outlined">search</span>
         </div>
         <div class="header-right">
-          <span class="material-icons-outlined">notifications</span>
-          <span class="material-icons-outlined">email</span>
           <span class="material-icons-outlined">account_circle</span>
         </div>
       </header>
@@ -83,6 +81,6 @@
     <!-- ApexCharts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.5/apexcharts.min.js"></script>
     <!-- Custom JS -->
-    <script src="{{asset('js/scripts.js')}}></script>
+    <script src="{{asset('js/scripts.js')}}"></script>
   </body>
 </html>

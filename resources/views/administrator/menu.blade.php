@@ -4,4 +4,8 @@
 
 @section('content')
     <p>Halaman Menu</p>
+
+    {{-- manajemen kategori menu, daftar menu, dan harga --}}
+
+    
 @endsection
