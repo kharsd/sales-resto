@@ -12,7 +12,7 @@ class AdministratorController extends Controller
      */
     public function index()
     {
-        return view('layout./administrator');
+        return view('administrator.home');
     }
 
     /**

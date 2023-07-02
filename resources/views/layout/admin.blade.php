@@ -12,6 +12,10 @@
     <!-- Material Icons -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
 
+    <!-- Bootstrap CSS-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{asset('css/styles.css')}}">
   </head>
@@ -43,17 +47,17 @@
 
         <ul class="sidebar-list">
           <li class="sidebar-list-item">
-            <a href="/administrator/menu">
+            <a href="/admin/menu">
               <span class="material-icons-outlined">restaurant_menu</span> Menu
             </a>
           </li>
           <li class="sidebar-list-item">
-            <a href="/administrator/meja">
+            <a href="/admin/meja">
               <span class="material-icons-outlined">table_restaurant</span> Meja
             </a>
           </li>
           <li class="sidebar-list-item">
-            <a href="/administrator/kasir">
+            <a href="/admin/kasir">
               <span class="material-icons-outlined">point_of_sale</span> Kasir
             </a>
           </li>
@@ -64,7 +68,7 @@
       <!-- Main -->
       <main class="main-container">
         <div class="main-title">
-          <h1>@yield('title')</h1> 
+          <h2 class="text-uppercase p-4">@yield('title')</h2> 
         </div>
 
         <div class="main-cards">
@@ -81,6 +85,6 @@
     <!-- ApexCharts -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.5/apexcharts.min.js"></script>
     <!-- Custom JS -->
-    <script src="{{asset('js/scripts.js')}}></script>
+    <script src="{{asset('js/scripts.js')}}"></script>
   </body>
 </html>

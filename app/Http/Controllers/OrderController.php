@@ -12,7 +12,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        return view('manajer./penjualan');
+        return view('manajer.penjualan');
     }
 
     /**

@@ -13,14 +13,15 @@ return new class extends Migration
     {
         Schema::create('meja', function (Blueprint $table) {
             $table->id();
-            $table->bigInteger('id_lokasi_meja')->unsigned();
+            // $table->bigInteger('id_lokasi_meja')->unsigned();
+            $table->integer('no_meja');
             $table->integer('harga');
             $table->timestamps();
         });
 
-        Schema::table('meja', function (Blueprint $table) {
-            $table->foreign('id_lokasi_meja')->references('id')->on('lokasi_meja')->onDelete('cascade')->onUpdate('cascade');
-        });
+        // Schema::table('meja', function (Blueprint $table) {
+        //     $table->foreign('id_lokasi_meja')->references('id')->on('lokasi_meja')->onDelete('cascade')->onUpdate('cascade');
+        // });
     }
 
     /**

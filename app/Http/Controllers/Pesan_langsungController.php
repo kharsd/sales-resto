@@ -12,7 +12,7 @@ class Pesan_langsungController extends Controller
      */
     public function index()
     {
-        return view('kasir./pesan_langsung');
+        return view('kasir.pesan_langsung');
     }
 
     /**

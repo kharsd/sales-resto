@@ -13,6 +13,7 @@ class Meja extends Model
 
     protected $fillable = [
         'id',
+        'no_meja',
         'harga',
         'id_lokasi_meja',
     ];

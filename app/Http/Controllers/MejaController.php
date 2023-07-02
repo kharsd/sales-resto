@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Meja;
 use Illuminate\Http\Request;
 
 class MejaController extends Controller
@@ -16,17 +17,72 @@ class MejaController extends Controller
     // }
     public function manajer()
     {
-        return view('manajer./meja');
+        return view('manajer.meja');
     }
 
     public function kasir()
     {
-        return view('kasir./meja');
+        return view('kasir.meja');
     }
 
-    public function administrator()
+    public function admin(Request $request)
     {
-        return view('administrator./meja');
+        if($request){
+            $data = Meja::where('no_meja', 'LIKE', '%' .$request->search. '%')->get();
+        }else{
+            $data = Meja::all();
+        }
+        return view ('administrator.meja', ['data'=>$data]);
+        // return view('administrator.meja');
+        // $data = Meja::all();
+        // return view ('administrator.meja', ['data'=>$data]);
+    }
+
+    public function tambah()
+    {
+        // $model = new Menu;
+        return view ('administrator.mejaTambah');
+        // return view('administrator.menuTambah', compact(
+        //     'model'
+        // ));
+    }
+    
+    public function simpan(Request $request){
+        $data = [
+            'no_meja' => $request->no_meja,
+            'harga' => $request->harga,
+            //nama di db => nama di menuTambah u/ name=''
+        ];
+
+        Meja::create($data);
+
+        return redirect()->route('meja');
+    }
+
+    public function edit($id){
+        // $menu = Menu::find($id)->first();
+        $meja = Meja::where('id', $id)->first();
+
+        return view('administrator.mejaEdit', ['meja'=>$meja]);
+    }
+
+    public function update($id, Request $request){
+        $data = [
+            'no_meja' => $request->no_meja,
+            'harga' => $request->harga,
+            //nama di db => nama di menuTambah u/ name=''
+        ];
+
+        Meja::find($id)->update($data);
+        // Menu::where('id', $id)->first();
+
+        return redirect()->route('meja');
+    }
+
+    public function hapus($id){
+        Meja::find($id)->delete();
+
+        return redirect()->route('meja');
     }
 
     /**
@@ -56,18 +112,18 @@ class MejaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
-    {
-        //
-    }
+    // public function edit(string $id)
+    // {
+    //     //
+    // }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+    // public function update(Request $request, string $id)
+    // {
+    //     //
+    // }
 
     /**
      * Remove the specified resource from storage.

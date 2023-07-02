@@ -70,14 +70,36 @@ Route::get('/kasir/meja', [MejaController::class, 'kasir']);
 // Route::get('/administrator', function () {
 //     return view('layout./administrator');
 // });
-Route::get('/administrator', [AdministratorController::class, 'index']);
+Route::get('/admin', [AdministratorController::class, 'index']);
 
-Route::get('/administrator/kasir', function () {
-    return view('administrator./kasir');
+Route::get('/admin/kasir', function () {
+    return view('layout./kasir');
 });
 
-Route::get('/administrator/meja', [MejaController::class, 'administrator']);
+//--- Meja ---
+// Route::get('/admin/meja', [MejaController::class, 'admin']);
+Route::controller(MejaController::class)->prefix('admin/meja')->group(function(){
+    Route::get('', 'admin')->name('meja');
+    Route::get('tambah', 'tambah')->name('meja.tambah');
+    Route::post('tambah', 'simpan')->name('meja.tambah.simpan');
+    Route::get('edit/{id}', 'edit')->name('meja.edit');
+    Route::post('edit/{id}', 'update')->name('meja.tambah.update');
+    Route::get('hapus/{id}', 'hapus')->name('meja.hapus');
+});
 // Route::resource('administrator/meja', MejaController::class);
 
-Route::get('/administrator/menu', [MenuController::class, 'administrator']);
+// --- Menu ---
+Route::controller(MenuController::class)->prefix('admin/menu')->group(function(){
+    Route::get('', 'index')->name('menu');
+    Route::get('tambah', 'tambah')->name('menu.tambah');
+    Route::post('tambah', 'simpan')->name('menu.tambah.simpan');
+    Route::get('edit/{id}', 'edit')->name('menu.edit');
+    Route::post('edit/{id}', 'update')->name('menu.tambah.update');
+    Route::get('hapus/{id}', 'hapus')->name('menu.hapus');
+});
+
 // Route::resource('administrator/menu', MenuController::class);
+// Route::get('/administrator/menu', [MenuController::class, 'administrator']);
+// Route::get('/administrator/menu/tambah', [MenuController::class, 'administratorTambah']);
+// Route::get('/administrator/menu/edit/{id}', [MenuController::class, 'administratorEdit']);
+// Route::get('/administrator/menu/hapus/{id}', [MenuController::class, 'administratorHapus']);

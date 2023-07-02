@@ -12,7 +12,7 @@ class ManajerController extends Controller
      */
     public function index()
     {
-        return view('layout./manajer');
+        return view('layout.manajer');
     }
 
     /**
