@@ -28,10 +28,11 @@ class MejaController extends Controller
     public function admin(Request $request)
     {
         if($request){
-            $data = Meja::where('no_meja', 'LIKE', '%' .$request->search. '%')->get();
+            $data = Meja::where('no_meja', 'LIKE', '%' .$request->search. '%')->orderBy('no_meja', 'asc')->get();
         }else{
             $data = Meja::all();
         }
+
         return view ('administrator.meja', ['data'=>$data]);
         // return view('administrator.meja');
         // $data = Meja::all();

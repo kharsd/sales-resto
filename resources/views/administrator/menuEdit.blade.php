@@ -14,10 +14,10 @@
             <label class="form-label">Kategori</label>
             <select class="form-select" aria-label="Default select example" name="kategori">
                 <option selected>{{ isset($menu) ? $menu->kategori : '' }}</option>
-                <option value="Main Course">Main Course</option>
-                <option value="Chef's Specials">Chef's Specials</option>
-                <option value="Appetizer">Appetizer</option>
-                <option value="Dessert">Dessert</option>
+                <option value="Main Course">Main Courses</option>
+                <option value="Starters">Starters</option>
+                <option value="Snacks">Snacks</option>
+                <option value="Desserts">Desserts</option>
                 <option value="Drinks">Drinks</option>
             </select>
         </div>

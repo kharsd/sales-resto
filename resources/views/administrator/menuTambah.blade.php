@@ -14,15 +14,15 @@
             <label class="form-label">Kategori</label>
             <select class="form-select" aria-label="Default select example" name="kategori">
                 <option selected>Kategori</option>
-                <option value="Main Course">Main Course</option>
-                <option value="Chef's Specials">Chef's Specials</option>
-                <option value="Appetizer">Appetizer</option>
-                <option value="Dessert">Dessert</option>
+                <option value="Main Course">Main Courses</option>
+                <option value="Starters">Starters</option>
+                <option value="Snacks">Snacks</option>
+                <option value="Desserts">Desserts</option>
                 <option value="Drinks">Drinks</option>
             </select>
         </div>
         <div class="mb-3">
-            <label class="form-label">Harga</label>
+            <label class="form-label">Harga (Rp)</label>
             <input type="text" class="form-control" placeholder="Harga Produk" name="harga">
         </div>
         {{-- <div class="mb-3">

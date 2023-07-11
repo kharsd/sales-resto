@@ -58,6 +58,11 @@ body {
   margin-bottom: 30px;
 }
 
+.sidebar-title a {
+  text-decoration: none;
+  color: #9e9ea4; 
+}
+
 .sidebar-title > span {
   display: none;
 }

@@ -18,7 +18,11 @@ class MenuController extends Controller
     public function index(Request $request)
     {
         if($request){
-            $data = Menu::where('nama', 'LIKE', '%' .$request->search. '%')->get();
+            // $data = Menu::where('nama', 'LIKE', '%' .$request->search. '%')->get();
+            $data = Menu::latest()
+                    ->where('nama', 'LIKE', '%' .$request->search. '%')
+                    ->orWhere('kategori', 'LIKE', '%' .$request->search. '%')
+                    ->get();
         }else{
             $data = Menu::all();
         }

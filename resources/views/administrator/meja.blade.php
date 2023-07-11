@@ -31,7 +31,7 @@
         <tr>
           <td class="text-center text-white p-3"> {{ $no++ }}</td>
           <td class="text-white p-3">{{ $row->no_meja }}</td>
-          <td class="text-white p-3">{{ $row->harga }}</td>
+          <td class="text-white p-3">{{ formatRupiah($row->harga) }}</td>
           {{-- <td class="p-3"></td> --}}
           <td class="p-3">
             <a href="{{ route('meja.edit', $row->id) }}}" class="btn btn-outline-light" role="button" data-bs-toggle="button">Edit</a>|

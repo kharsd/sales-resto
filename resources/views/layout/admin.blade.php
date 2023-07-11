@@ -39,8 +39,9 @@
       <!-- Sidebar -->
       <aside id="sidebar">
         <div class="sidebar-title">
-          <div class="sidebar-brand">            
-            RESTAURANT
+          <div class="sidebar-brand"> 
+            <a href="/admin">RESTAURANT</a>           
+            
           </div>
           <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
         </div>
