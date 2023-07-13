@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('order', function (Blueprint $table) {
             $table->id();
+            $table->bigInteger('id_user')->unsigned();
             $table->bigInteger('id_order_menu')->unsigned();
             $table->bigInteger('id_meja')->unsigned();
             $table->bigInteger('id_reservasi')->unsigned();
@@ -22,9 +23,8 @@ return new class extends Migration
             $table->integer('no_struk');
             $table->integer('harga_meja');
             $table->timestamps();
-        });
-
-        Schema::table('order', function (Blueprint $table) {
+            
+            $table->foreign('id_user')->references('id')->on('users');
             $table->foreign('id_order_menu')->references('id')->on('order_menu')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('id_meja')->references('id')->on('meja')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('id_reservasi')->references('id')->on('reservasi')->onDelete('cascade')->onUpdate('cascade');

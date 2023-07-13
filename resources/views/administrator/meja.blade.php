@@ -13,7 +13,9 @@
       </div>
     </div>    
     <div class="d-md-flex justify-content-md-end p-3">
-      <a href="{{ route('meja.tambah') }}" class="btn btn-outline-light" role="button" data-bs-toggle="button">+ &nbsp; Tambah Meja</a>
+      <a href="{{ route('meja.tambah') }}">
+        <button type="submit" class="btn btn-light">+ &nbsp; Tambah Meja</button>
+      </a>
     </div>
     <br>
     <table class="table">
@@ -32,10 +34,13 @@
           <td class="text-center text-white p-3"> {{ $no++ }}</td>
           <td class="text-white p-3">{{ $row->no_meja }}</td>
           <td class="text-white p-3">{{ formatRupiah($row->harga) }}</td>
-          {{-- <td class="p-3"></td> --}}
           <td class="p-3">
-            <a href="{{ route('meja.edit', $row->id) }}}" class="btn btn-outline-light" role="button" data-bs-toggle="button">Edit</a>|
-            <a href="{{ route('meja.hapus', $row->id) }}}" onclick="return confirm('Anda yakin akan menghapus data ini?')" class="btn btn-outline-light" role="button" data-bs-toggle="button">Hapus</a>
+            <a href="{{ route('meja.edit', $row->id) }}">
+              <button type="submit" class="btn btn-outline-light">Edit</button>
+            </a>
+            <a href="{{ route('meja.hapus', $row->id) }}" onclick="return confirm('Anda yakin akan menghapus data ini?')">
+              <button type="submit" class="btn btn-outline-light">Hapus</button>
+            </a>
           </td>
         </tr>
         

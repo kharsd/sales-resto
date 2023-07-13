@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -18,28 +17,38 @@
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{{asset('css/styles.css')}}">
   </head>
+
   <body>
     <div class="grid-container">
-
       <!-- Header -->
       <header class="header">
         <div class="menu-icon" onclick="openSidebar()">
           <span class="material-icons-outlined">menu</span>
         </div>
         <div class="header-left">
-          <span class="material-icons-outlined">search</span>
+          {{-- <span class="material-icons-outlined">search</span> --}}
         </div>
-        <div class="header-right">
+        {{-- <div class="header-right">
           <span class="material-icons-outlined">account_circle</span>
-        </div>
+        </div> --}}
+        <ul>
+          @auth     
+            <div class="header-right">
+                <a href="/logout" class=" text-white fs-4 text-decoration-none">
+                  <span class="material-icons-outlined">logout</span>Logout
+                </a>
+            </div>
+          @endauth
+      </ul>
       </header>
       <!-- End Header -->
 
       <!-- Sidebar -->
       <aside id="sidebar">
         <div class="sidebar-title">
-          <div class="sidebar-brand">
-            RESTAURANT
+          <div class="sidebar-brand"> 
+            <a href="/kasir">RESTAURANT</a>           
+            
           </div>
           <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
         </div>
@@ -67,22 +76,18 @@
       <!-- Main -->
       <main class="main-container">
         <div class="main-title">
-          <h1>@yield('title')</h1> 
+          <h2 class="text-uppercase p-4">@yield('title')</h2> 
         </div>
-
         <div class="main-cards">
           @yield('content')
-
         </div>
-
       </main>
       <!-- End Main -->
 
     </div>
 
-    <!-- Scripts -->
-    <!-- ApexCharts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/apexcharts/3.35.5/apexcharts.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
     <!-- Custom JS -->
     <script src="{{asset('js/scripts.js')}}"></script>
   </body>

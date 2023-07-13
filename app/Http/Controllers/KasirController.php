@@ -2,64 +2,64 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
+use App\Http\Middleware\Kasir;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Hash;
 
 class KasirController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+//------------- Administrator -------------
+    public function index(Request $request)
     {
-        return view('kasir.home');
+        if($request){
+            $data = User::where('role_id', '2')
+                            ->where('name', 'LIKE', '%' .$request->search. '%')
+                            ->orderBy('name', 'asc')->get();
+        }else{
+            $data = User::all();
+        }
+
+        return view ('administrator.kasir', ['data'=>$data]);
+    } 
+        
+    public function tambah()
+    {
+        return view ('administrator.kasirTambah');
+    }
+    
+    public function simpan(Request $request){
+        $data = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => $request->password,
+            //nama di db => nama di menuTambah u/ name=''
+        ];
+
+        User::create($data);
+
+        return redirect()->route('kasir');
+        // $validatedData = $request->validate([
+        //     'nama' => ['required', 'max:225'],
+        //     'email' => ['required', 'email:dns', 'unique:users'],
+        //     'password' => ['required'],
+        // ]);
+
+        // $validatedData['password'] = bcrypt($validatedData['password']);
+        // // $validatedData['password'] = Hash::make($validatedData['password']);
+        // User::create($validatedData);
+        
+        // return redirect()->route('kasir');
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+    public function hapus($id){
+        User::find($id)->delete();
+        return redirect()->route('kasir');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+//------------- Kasir -------------
+    public function home(){
+        return view ('kasir.home');
     }
 }

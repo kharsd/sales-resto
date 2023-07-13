@@ -1,15 +1,16 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\AdministratorController;
-use App\Http\Controllers\KasirController;
-use App\Http\Controllers\ManajerController;
-use App\Http\Controllers\OrderController;
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MejaController;
 use App\Http\Controllers\MenuController;
-use App\Http\Controllers\Pesan_langsungController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\KasirController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\ManajerController;
 use App\Http\Controllers\ReservasiController;
+use App\Http\Controllers\AdministratorController;
+use App\Http\Controllers\Pesan_langsungController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,63 +23,33 @@ use App\Http\Controllers\ReservasiController;
 |
 */
 
-// ----- Login -----
-Route::get('/', function () {
-    return view('welcome');
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+Route::get('/register', function () {
+    return view('registrasi');
 });
+    
+Route::get('/login', [AuthController::class, 'login'])->name('login')->middleware('guest');
+Route::post('/login', [AuthController::class, 'authenticate'])->middleware('guest');
 
-
-
-// ----- Manajer -----
-
-// Route::get('/manajer', function () {
-//     return view('layout./manajer');
-// });
-Route::get('/manajer', [ManajerController::class, 'index']);
-
-// Route::get('/manajer/penjualan', [OrderController::class, 'index']);
-Route::resource('manajer/penjualan', OrderController::class);
-
-Route::get('/manajer/menu', [MenuController::class, 'manajer']);
-// Route::resource('manajer/menu', MenuController::class);
-
-Route::get('/manajer/meja', [MejaController::class, 'manajer']);
-// Route::resource('manajer/meja', MejaController::class);
-
-
-
-// ----- Kasir -----
-
-// Route::get('/kasir', function () {
-//     return view('layout./kasir');
-// });
-Route::get('/kasir', [KasirController::class, 'index']);
-
-// Route::get('/kasir/pesan langsung', [Pesan_langsungController::class, 'index']);
-Route::resource('kasir/pesan langsung', Pesan_langsungController::class);
-
-// Route::get('/kasir/reservasi', [ReservasiController::class, 'index']);
-Route::resource('kasir/reservasi', ReservasiController::class);
-
-Route::get('/kasir/meja', [MejaController::class, 'kasir']);
-// Route::resource('kasir/meja', MejaController::class);
-
+Route::get('/logout', [AuthController::class, 'logout']);
 
 
 // ----- Administrator -----
+Route::get('/admin', [AdministratorController::class, 'index'])->middleware(['auth', 'admin']);
 
-// Route::get('/administrator', function () {
-//     return view('layout./administrator');
-// });
-Route::get('/admin', [AdministratorController::class, 'index']);
-
-Route::get('/admin/kasir', function () {
-    return view('layout./kasir');
+//--- Kasir ---
+Route::controller(KasirController::class)->prefix('admin/kasir')->middleware(['auth', 'admin'])->group(function(){
+    Route::get('', 'index')->name('kasir');
+    Route::get('tambah', 'tambah')->name('kasir.tambah');
+    Route::post('tambah', 'simpan')->name('kasir.tambah.simpan');
+    Route::get('hapus/{id}', 'hapus')->name('kasir.hapus');
 });
 
 //--- Meja ---
-// Route::get('/admin/meja', [MejaController::class, 'admin']);
-Route::controller(MejaController::class)->prefix('admin/meja')->group(function(){
+Route::controller(MejaController::class)->prefix('admin/meja')->middleware(['auth', 'admin'])->group(function(){
     Route::get('', 'admin')->name('meja');
     Route::get('tambah', 'tambah')->name('meja.tambah');
     Route::post('tambah', 'simpan')->name('meja.tambah.simpan');
@@ -86,10 +57,9 @@ Route::controller(MejaController::class)->prefix('admin/meja')->group(function()
     Route::post('edit/{id}', 'update')->name('meja.tambah.update');
     Route::get('hapus/{id}', 'hapus')->name('meja.hapus');
 });
-// Route::resource('administrator/meja', MejaController::class);
 
 // --- Menu ---
-Route::controller(MenuController::class)->prefix('admin/menu')->group(function(){
+Route::controller(MenuController::class)->prefix('admin/menu')->middleware(['auth', 'admin'])->group(function(){
     Route::get('', 'index')->name('menu');
     Route::get('tambah', 'tambah')->name('menu.tambah');
     Route::post('tambah', 'simpan')->name('menu.tambah.simpan');
@@ -98,8 +68,34 @@ Route::controller(MenuController::class)->prefix('admin/menu')->group(function()
     Route::get('hapus/{id}', 'hapus')->name('menu.hapus');
 });
 
-// Route::resource('administrator/menu', MenuController::class);
-// Route::get('/administrator/menu', [MenuController::class, 'administrator']);
-// Route::get('/administrator/menu/tambah', [MenuController::class, 'administratorTambah']);
-// Route::get('/administrator/menu/edit/{id}', [MenuController::class, 'administratorEdit']);
-// Route::get('/administrator/menu/hapus/{id}', [MenuController::class, 'administratorHapus']);
+
+// ----- Kasir -----
+Route::get('/kasir', [KasirController::class, 'home'])->middleware(['auth', 'kasir']);
+
+// --- Pesan Langsung ---
+Route::get('/kasir/pesan langsung', [Pesan_langsungController::class, 'index'])->middleware(['auth', 'kasir']);
+// Route::resource('kasir/pesan langsung', Pesan_langsungController::class);
+
+// --- Menu ---
+Route::get('/kasir/reservasi', [ReservasiController::class, 'index'])->middleware(['auth', 'kasir']);
+// Route::resource('kasir/reservasi', ReservasiController::class);
+
+// --- Meja ---
+Route::get('/kasir/meja', [MejaController::class, 'kasir'])->middleware(['auth', 'kasir']);
+// Route::resource('kasir/meja', MejaController::class);
+
+
+// ----- Manajer -----
+Route::get('/manajer', [ManajerController::class, 'index'])->middleware(['auth', 'manajer']);
+
+// --- Penjualan ---
+Route::get('/manajer/penjualan', [OrderController::class, 'index'])->middleware(['auth', 'manajer']);
+// Route::resource('manajer/penjualan', OrderController::class);
+
+// --- Menu ---
+Route::get('/manajer/menu', [MenuController::class, 'manajer'])->middleware(['auth', 'manajer']);
+// Route::resource('manajer/menu', MenuController::class);
+
+// --- Meja ---
+Route::get('/manajer/meja', [MejaController::class, 'manajer'])->middleware(['auth', 'manajer']);
+// Route::resource('manajer/meja', MejaController::class);

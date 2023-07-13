@@ -16,11 +16,10 @@ return new class extends Migration
             $table->bigInteger('id_menu')->unsigned();
             $table->integer('jumlah');
             $table->timestamps();
-        });
-    
-        Schema::table('order_menu', function (Blueprint $table) {
+            
             $table->foreign('id_menu')->references('id')->on('menu')->onDelete('cascade')->onUpdate('cascade');
         });
+
     }
 
     /**

@@ -18,9 +18,7 @@ return new class extends Migration
             $table->integer('total_pembayaran');
             $table->dateTime('tanggal_pembayaran');
             $table->timestamps();
-        });
-
-        Schema::table('pembayaran', function (Blueprint $table) {
+            
             $table->foreign('id_metode_pembayaran')->references('id')->on('metode_pembayaran')->onDelete('cascade')->onUpdate('cascade');
         });
     }
