@@ -24,10 +24,8 @@
     <div class="grid-container">
       <!-- Header -->
       <header class="header">
-        <div class="sidebar-brand"> 
-          <a href="/manajer">
-            RESTAURANT
-          </a>     
+        <div class="menu-icon" onclick="openSidebar()">
+          <span class="material-icons-outlined">menu</span>
         </div>
         <div class="header-left">
           {{-- <span class="material-icons-outlined">search</span> --}}
@@ -38,7 +36,7 @@
         <ul>
           @auth     
             <div class="header-right">
-                <a href="/logout" class="text-white fs-4 text-decoration-none">
+                <a href="/logout" class=" text-white fs-4 text-decoration-none">
                   <span class="material-icons-outlined">logout</span>Logout
                 </a>
             </div>
@@ -50,8 +48,8 @@
       <!-- Sidebar -->
       <aside id="sidebar">
         <div class="sidebar-title">
-          <div class="sidebar-brand">
-            RESTAURANT
+          <div class="sidebar-brand"> 
+            <a href="/manajer">RESTAURANT</a>       
           </div>
           <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
         </div>

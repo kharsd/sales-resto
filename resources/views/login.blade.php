@@ -40,7 +40,7 @@
 
                     <button class="w-100 btn btn-lg btn-primary" type="submit">Login</button>
                 </form>
-                <small class="d-block text-center mt-3">Tidak Punya Account? <a href="/register" style="color: blue;">Register!</a></small>
+                {{-- <small class="d-block text-center mt-3">Tidak Punya Account? <a href="/register" style="color: blue;">Register!</a></small> --}}
             </main>
         </div>
     </div>

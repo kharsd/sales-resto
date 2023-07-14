@@ -47,7 +47,7 @@
       <aside id="sidebar">
         <div class="sidebar-title">
           <div class="sidebar-brand"> 
-            <a href="/kasir">RESTAURANT</a>           
+            <a href="/kasir">RESTAURANT</a>       
             
           </div>
           <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
